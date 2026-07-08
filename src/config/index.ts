@@ -15,8 +15,8 @@ export const SITE_CONFIG: SiteConfig = {
   socialLinks: [
     { text: "Instagram", href: "https://instagram.com/josesalazar2" },
     { text: "LinkedIn", href: "https://www.linkedin.com/in/josé-alejandro-salazar-7594b01b8" },
-    { text: "Gmail", href: "mailto:jasspro2@gmail.com" },
-    { text: "WhatsApp", href: "wa.me/584141846304" },
+    { text: "Gmail", href: "https://mailto:jasspro2@gmail.com" },
+    { text: "WhatsApp", href: "https://wa.me/584141846304" },
   ],
   socialImage: "/zen-og.png",
   canonicalURL: "https://astro-zen.vercel.app",
