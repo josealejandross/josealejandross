@@ -13,11 +13,10 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "About", href: "#about" },
   ],
   socialLinks: [
-    { text: "Twitter", href: "https://github.com/immois/astro-zen" },
-    { text: "LinkedIn", href: "https://github.com/immois/astro-zen" },
-    { text: "Github", href: "https://github.com/immois/astro-zen" },
-    { text: "Youtube", href: "https://github.com/immois/astro-zen" },
-    { text: "Dribbble", href: "https://github.com/immois/astro-zen" },
+    { text: "Instagram", href: "https://instagram.com/josesalazar2" },
+    { text: "LinkedIn", href: "https://www.linkedin.com/in/josé-alejandro-salazar-7594b01b8" },
+    { text: "Gmail", href: "mailto:jasspro2@gmail.com" },
+    { text: "WhatsApp", href: "wa.me/584141846304" },
   ],
   socialImage: "/zen-og.png",
   canonicalURL: "https://astro-zen.vercel.app",
@@ -87,9 +86,11 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Hi, I’m Alejandro Múnez, a passionate Mobile and Web Developer with a knack for crafting seamless digital experiences. With a strong background in both Android and iOS development, as well as front-end web technologies, I thrive in the intersection where creativity meets technology.
+      Hi, I'm José Alejandro Salazar, a Senior Graphic Designer passionate about creating visuals that truly connect with people.
 
-      Over the years, I’ve honed my skills in building robust, user-friendly applications that not only meet the needs of users but also push the boundaries of what’s possible. My projects range from innovative mobile applications to responsive web designs, all with a focus on performance, security, and scalability.
+      With over a decade of experience in branding, digital design, and motion graphics, I thrive at the intersection where creativity meets technology, backed by a Systems Engineering foundation that lets me work with scripts, expressions, and automation.
+
+      Over the years, I've honed my skills crafting solid, memorable brand identities, adapting to different industries and audiences with a constant focus on clarity, impact, and visual coherence.
     `,
     image: "/perfil.png",
   },
