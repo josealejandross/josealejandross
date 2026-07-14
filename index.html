@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jose Alejandro Salazar — Portfolio</title>
+<meta name="description" content="Portfolio de Jose Alejandro Salazar, Senior Graphic Designer y Creative Director.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Archivo+Black&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F1EEE8;
+    --bg-2: #E8E4DB;
+    --ink: #16140F;
+    --ink-soft: #57534A;
+    --line: #D6D0C3;
+    --amber: #F5A623;
+    --white: #FBFAF7;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.6;
+  }
+  .display{
+    font-family:'Archivo Black', sans-serif;
+    text-transform:uppercase;
+    line-height:0.92;
+    letter-spacing:-0.01em;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  :focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+
+  .page{
+    position:relative;
+    padding:120px 64px 90px;
+    max-width:1400px;
+    margin:0 auto;
+    border-bottom:1px solid var(--line);
+  }
+  .page-number{
+    position:absolute; bottom:28px; right:64px;
+    font-size:13px; color:var(--ink-soft);
+  }
+
+  /* ---------- TOP INDEX BAR ---------- */
+  .index-nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:center; gap:40px;
+    height:60px; background:rgba(241,238,232,0.85);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .index-nav a{
+    font-size:13px; color:var(--ink-soft); font-weight:500;
+    display:flex; align-items:center; gap:8px;
+    transition:color 0.2s;
+  }
+  .index-nav a .num{
+    font-family:'Archivo', sans-serif; font-weight:700;
+  }
+  .index-nav a.active{ color:var(--ink); }
+  .index-nav a.active .num{ color:var(--amber); }
+  .index-nav a .bar{
+    width:0; height:1px; background:var(--ink); transition:width 0.25s;
+  }
+  .index-nav a.active .bar{ width:14px; }
+  @media (max-width:700px){
+    .index-nav{ gap:18px; padding:0 16px; overflow-x:auto; justify-content:flex-start; }
+  }
+
+  /* ---------- HERO / COVER ---------- */
+  .cover{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding:60px 64px 0; position:relative; overflow:hidden;
+    background:
+      radial-gradient(ellipse 700px 400px at 75% 30%, rgba(0,0,0,0.05), transparent),
+      radial-gradient(ellipse 500px 350px at 20% 75%, rgba(245,166,35,0.10), transparent);
+  }
+  .cover::before{
+    content:''; position:absolute; inset:0; opacity:0.4; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .cover-label{
+    font-size:15px; letter-spacing:0.02em; color:var(--ink-soft);
+    margin-bottom:6px; position:relative;
+  }
+  .cover h1{
+    font-size:clamp(56px, 11vw, 148px);
+    max-width:1100px; position:relative;
+  }
+  .cover-meta{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-top:36px; max-width:1100px; position:relative;
+    font-size:15px; color:var(--ink-soft); flex-wrap:wrap; gap:16px;
+  }
+  .cover-meta strong{ color:var(--ink); font-weight:600; }
+  .cover-meta .year{ font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; color:var(--ink); }
+
+  .marquee{
+    position:absolute; bottom:0; left:0; right:0;
+    background:var(--ink); color:var(--white);
+    white-space:nowrap; overflow:hidden; padding:16px 0;
+  }
+  .marquee-track{
+    display:inline-block; padding-left:100%;
+    animation:scroll 22s linear infinite;
+    font-family:'Archivo', sans-serif; font-weight:700; font-size:18px; text-transform:uppercase;
+  }
+  .marquee-track span{ margin:0 28px; color:var(--amber); }
+  @keyframes scroll{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
+
+  /* ---------- CATEGORIES HERO ---------- */
+  .cat-hero{ padding:80px 64px; border-bottom:1px solid var(--line); }
+  .cat-hero-label{ font-size:13px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
+  .cat-list{ display:flex; flex-direction:column; margin-top:24px; }
+  .cat-item{
+    display:flex; align-items:baseline; gap:24px; padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .cat-item:last-child{ border-bottom:1px solid var(--line); }
+  .cat-num{ font-family:'Archivo', sans-serif; font-weight:700; font-size:15px; color:var(--ink-soft); width:32px; flex-shrink:0; }
+  .cat-name{
+    font-family:'Archivo Black', sans-serif; text-transform:uppercase;
+    font-size:clamp(26px, 5vw, 54px); transition:color 0.2s;
+  }
+  .cat-item:hover .cat-name{ color:var(--amber); }
+  .cat-arrow{ margin-left:auto; font-size:24px; opacity:0; transition:opacity 0.2s; flex-shrink:0; }
+  .cat-item:hover .cat-arrow{ opacity:1; color:var(--amber); }
+  @media (max-width:700px){ .cat-item{ gap:14px; } .cat-arrow{ display:none; } }
+
+  /* ---------- ABOUT PAGE ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:280px 1fr 1fr; gap:56px;
+  }
+  .about-photo{
+    aspect-ratio:3/4; background:var(--bg-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; color:var(--ink-soft); text-align:center; padding:20px;
+  }
+  .hello{
+    font-family:'Archivo Black', sans-serif; font-size:34px; text-transform:none;
+  }
+  .hello-sub{ color:var(--ink-soft); font-size:16px; margin-top:2px; margin-bottom:18px; }
+  .about-bio{ font-size:15px; color:var(--ink-soft); max-width:420px; }
+  .about-bio strong{ color:var(--ink); font-weight:600; }
+  .block-title{
+    font-size:22px; font-weight:700; font-family:'Archivo', sans-serif; margin-bottom:18px;
+  }
+  .entry{ margin-bottom:20px; }
+  .entry .when{ font-size:13px; color:var(--ink-soft); font-family:'Archivo', sans-serif; font-weight:700; }
+  .entry .what{ font-size:16px; font-weight:600; margin-top:2px; }
+  .entry .where{ font-size:14px; color:var(--ink-soft); }
+  .contact-block{ margin-top:32px; }
+  .contact-row{ display:flex; gap:14px; font-size:14px; margin-bottom:6px; }
+  .contact-row .l{ color:var(--ink-soft); width:80px; flex-shrink:0; }
+  .skills-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .skill-pill{
+    border:1px solid var(--line); padding:8px 16px; border-radius:100px; font-size:13px;
+    background:var(--white);
+  }
+  .programs-block{ grid-column:1 / -1; margin-top:16px; }
+  .programs-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:32px;
+  }
+  .program-cat h4{
+    font-size:13px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);
+    margin-bottom:16px; font-family:'Archivo', sans-serif; font-weight:700;
+  }
+  .program-item{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .program-icon{
+    width:36px; height:36px; border-radius:9px; background:var(--white);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    padding:6px; flex-shrink:0;
+  }
+  .program-icon img{ max-width:100%; max-height:100%; object-fit:contain; }
+  .program-name{ font-size:14px; }
+  @media (max-width:900px){ .programs-grid{ grid-template-columns:repeat(2, 1fr); gap:28px 20px; } }
+  @media (max-width:900px){
+    .about-grid{ grid-template-columns:1fr; }
+    .about-photo{ max-width:220px; }
+  }
+
+  /* ---------- CLIENTS PAGE ---------- */
+  .clients-page{ text-align:center; }
+  .clients-page .block-title{ font-size:15px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:44px; text-align:center; }
+  .client-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:40px 24px;
+    max-width:1080px; margin:0 auto;
+    align-items:start;
+  }
+  .client-item{ display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .client-logo{
+    width:100%; height:176px;
+    display:flex; align-items:center; justify-content:center;
+    padding:16px;
+  }
+  .client-logo img{
+    max-width:100%; max-height:100%; object-fit:contain;
+    filter:grayscale(1); opacity:0.75; transition:filter 0.25s, opacity 0.25s;
+  }
+  .client-item:hover .client-logo img{ filter:grayscale(0); opacity:1; }
+  .client-name{ font-size:13px; color:var(--ink-soft); text-align:center; }
+  @media (max-width:700px){ .client-grid{ grid-template-columns:repeat(2, 1fr); } }
+
+  /* ---------- CONTENTS / TRABAJOS INDEX ---------- */
+  .contents-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; margin-top:48px;
+  }
+  .contents-card{ display:block; }
+  .contents-thumb{
+    aspect-ratio:4/5; background:var(--bg-2); border:1px solid var(--line);
+    display:flex; align-items:flex-start; justify-content:flex-end; padding:16px;
+    font-family:'Archivo Black', sans-serif; font-size:34px; color:var(--line);
+    transition:background 0.25s, color 0.25s;
+  }
+  .contents-card:hover .contents-thumb{ background:var(--ink); color:var(--amber); }
+  .contents-card h3{ font-size:18px; font-weight:700; margin-top:14px; }
+  .contents-card ul{ list-style:none; margin-top:8px; font-size:13px; color:var(--ink-soft); }
+  .contents-card li{ margin-bottom:2px; }
+  @media (max-width:900px){ .contents-grid{ grid-template-columns:repeat(2, 1fr); } }
+
+  /* ---------- MAC-STYLE SERVICE CARDS ---------- */
+  .mac-cards{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; margin-top:48px;
+  }
+  .mac-card{
+    position:relative; border-radius:20px; overflow:hidden;
+    aspect-ratio:3/4.2; padding:28px; display:flex; flex-direction:column;
+    color:#F5F3EE; isolation:isolate;
+  }
+  .mac-card::before{
+    content:''; position:absolute; inset:0; z-index:-1;
+  }
+  .mac-card.c1::before{ background:radial-gradient(circle at 30% 20%, #3a2c12, #16140f 70%); }
+  .mac-card.c2::before{ background:radial-gradient(circle at 70% 20%, #12303a, #0d1418 70%); }
+  .mac-card.c3::before{ background:radial-gradient(circle at 30% 80%, #351330, #14090f 70%); }
+  .mac-card.c4::before{ background:radial-gradient(circle at 70% 80%, #3a1e10, #170e0a 70%); }
+  .mac-card .eyebrow{ font-size:13px; opacity:0.75; margin-bottom:8px; }
+  .mac-card h3{
+    font-family:'Archivo Black', sans-serif; text-transform:none;
+    font-size:clamp(20px, 2.4vw, 26px); line-height:1.18; letter-spacing:-0.01em;
+  }
+  .mac-card .placeholder-tag{
+    margin-top:auto; font-size:12px; opacity:0.5; align-self:flex-start;
+    border:1px dashed rgba(255,255,255,0.3); padding:5px 10px; border-radius:100px;
+  }
+  .mac-card .plus{
+    position:absolute; bottom:20px; right:20px; width:34px; height:34px; border-radius:50%;
+    background:rgba(255,255,255,0.14); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center; font-size:20px; line-height:1;
+    transition:background 0.2s;
+  }
+  .mac-card:hover .plus{ background:var(--amber); color:var(--ink); }
+  @media (max-width:900px){ .mac-cards{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:520px){ .mac-cards{ grid-template-columns:1fr; } .mac-card{ aspect-ratio:4/3; } }
+
+  /* ---------- PROJECT SPREAD ---------- */
+  .spread-head{
+    display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; gap:24px; flex-wrap:wrap;
+  }
+  .spread-head .eyebrow{ font-size:13px; color:var(--ink-soft); font-family:'Archivo', sans-serif; font-weight:700; }
+  .spread-head h2{ font-size:clamp(32px, 5vw, 56px); margin-top:6px; }
+  .spread-head p{ max-width:380px; color:var(--ink-soft); font-size:15px; }
+  .spread-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+  .spread-item{
+    aspect-ratio:1/1; background:var(--bg-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; color:var(--ink-soft); text-align:center; padding:16px;
+  }
+  @media (max-width:900px){ .spread-grid{ grid-template-columns:repeat(2, 1fr); } }
+
+  /* ---------- HORIZONTAL SCROLL CAROUSEL (Behance-style) ---------- */
+  .carousel{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px;
+    scrollbar-width:none; -ms-overflow-style:none; padding-bottom:4px;
+  }
+  .carousel::-webkit-scrollbar{ display:none; }
+  .carousel-slide{
+    scroll-snap-align:start; flex:0 0 92%; position:relative;
+    aspect-ratio:16/10; border-radius:20px; overflow:hidden;
+    display:flex; align-items:center;
+  }
+  .carousel-slide.s1{ background:radial-gradient(ellipse at 60% 30%, #3a2c12, #16140f 75%); }
+  .carousel-slide.s2{ background:radial-gradient(ellipse at 40% 70%, #2a1c30, #120e16 75%); }
+  .carousel-slide.s3{ background:radial-gradient(ellipse at 60% 60%, #123028, #0d1614 75%); }
+  .glass-panel{
+    position:relative; margin-left:40px; max-width:380px;
+    background:rgba(255,255,255,0.10); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.2); border-radius:16px;
+    padding:28px 30px; color:#F5F3EE;
+  }
+  .glass-panel .idx{ font-size:13px; opacity:0.7; }
+  .glass-panel .idx strong{ display:block; font-size:22px; margin-top:2px; font-family:'Archivo', sans-serif; font-weight:700; }
+  .glass-panel h4{ font-family:'Archivo Black', sans-serif; font-size:24px; margin-top:16px; line-height:1.15; }
+  .glass-panel p{ font-size:14px; opacity:0.85; margin-top:10px; }
+  .carousel-tag{
+    position:absolute; bottom:20px; right:24px; font-size:12px; color:rgba(255,255,255,0.7);
+    border:1px dashed rgba(255,255,255,0.35); padding:5px 10px; border-radius:100px;
+  }
+  .carousel-dots{ display:flex; justify-content:center; gap:8px; margin-top:16px; }
+  .carousel-dots span{ width:6px; height:6px; border-radius:50%; background:var(--line); }
+  .carousel-dots span.active{ background:var(--ink); }
+  @media (max-width:700px){ .carousel-slide{ flex-basis:100%; } .glass-panel{ margin-left:20px; max-width:78%; padding:20px; } }
+
+  /* ---------- CONTACT / THANK YOU ---------- */
+  .thanks{
+    min-height:80vh; display:flex; flex-direction:column; justify-content:center;
+  }
+  .thanks-grid{
+    display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:end;
+  }
+  .thanks h2{ font-size:clamp(56px, 10vw, 120px); }
+  .thanks .sub{ font-style:italic; color:var(--ink-soft); font-size:18px; margin-top:12px; }
+  .contact-links{ display:flex; flex-direction:column; gap:14px; }
+  .contact-links a{
+    display:flex; justify-content:space-between; border-bottom:1px solid var(--line);
+    padding-bottom:12px; font-size:15px;
+  }
+  .contact-links a .l{ color:var(--ink-soft); }
+  .contact-links a:hover .l{ color:var(--amber); }
+  @media (max-width:800px){ .thanks-grid{ grid-template-columns:1fr; } }
+
+  footer{
+    padding:32px 64px; display:flex; justify-content:space-between;
+    font-size:13px; color:var(--ink-soft); flex-wrap:wrap; gap:10px;
+  }
+  @media (max-width:700px){
+    .page{ padding:100px 24px 70px; }
+    .page-number{ right:24px; }
+    footer{ padding:24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="index-nav" id="indexNav">
+  <a href="#about" data-target="about"><span class="num">01</span><span class="bar"></span>Sobre mí</a>
+  <a href="#servicios" data-target="servicios"><span class="num">02</span><span class="bar"></span>Servicios</a>
+  <a href="#trabajos" data-target="trabajos"><span class="num">03</span><span class="bar"></span>Trabajos</a>
+  <a href="#contacto" data-target="contacto"><span class="num">04</span><span class="bar"></span>Contacto</a>
+</nav>
+
+<main>
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="cover-label">Jose Alejandro Salazar</div>
+    <h1 class="display">Senior Graphic Designer</h1>
+    <div class="cover-meta">
+      <div>Portfolio</div>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>●</span>Portfolio<span>●</span>Jose Alejandro Salazar<span>●</span>Portfolio<span>●</span>Jose Alejandro Salazar<span>●</span>Portfolio<span>●</span>Jose Alejandro Salazar
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="page" id="about">
+    <span class="page-number">02</span>
+    <div class="about-grid">
+      <div class="about-photo">Foto pendiente</div>
+      <div>
+        <div class="hello">¡Hola!</div>
+        <div class="hello-sub">Soy Jose, Diseñador Gráfico</div>
+        <p class="about-bio">Diseñador gráfico y director creativo con <strong>más de 10 años de experiencia</strong>. Especializado en <strong>branding, motion graphics, diseño web y contenido para redes sociales</strong>. Formación en Ingeniería de Sistemas, con enfoque en flujos de trabajo con IA generativa. Capaz de trabajar de forma independiente o liderando equipos creativos.</p>
+        <div class="contact-block">
+          <div class="contact-row"><span class="l">Email</span><span>jasspro2@gmail.com</span></div>
+          <div class="contact-row"><span class="l">WhatsApp</span><span>+58 414 1846304</span></div>
+          <div class="contact-row"><span class="l">Instagram</span><span>@josesalazar2</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="block-title">Experiencia</div>
+        <div class="entry">
+          <div class="when">2023 — Presente</div>
+          <div class="what">Senior Graphic Designer</div>
+          <div class="where">Back9 &amp; B9 Ticketing · Lechería, Venezuela</div>
+        </div>
+        <div class="entry">
+          <div class="when">2022 — Presente</div>
+          <div class="what">Creative Director</div>
+          <div class="where">Circuito Líder 100.5FM · Lechería, Venezuela</div>
+        </div>
+        <div class="entry">
+          <div class="when">Continuo</div>
+          <div class="what">Diseñador Freelance</div>
+          <div class="where">Clientes: Carlos Mauricio Ramírez, Gelatería 4D Next y otros</div>
+        </div>
+        <div class="block-title" style="margin-top:32px;">Formación</div>
+        <div class="entry">
+          <div class="when">—</div>
+          <div class="what">Ingeniería de Sistemas</div>
+          <div class="where">Aplicada a flujos de trabajo creativos con IA</div>
+        </div>
+      </div>
+      <div class="programs-block">
+        <div class="block-title">Programas</div>
+        <div class="programs-grid">
+          <div class="program-cat">
+            <h4>Diseño Gráfico</h4>
+            <div class="program-item"><div class="program-icon"><img src="assets/programas/illustrator.png" alt="Illustrator"></div><div class="program-name">Illustrator</div></div>
+            <div class="program-item"><div class="program-icon"><img src="assets/programas/photoshop.png" alt="Photoshop"></div><div class="program-name">Photoshop</div></div>
+          </div>
+          <div class="program-cat">
+            <h4>Diseño Web</h4>
+            <div class="program-item"><div class="program-icon"><img src="assets/programas/figma.png" alt="Figma"></div><div class="program-name">Figma</div></div>
+            <div class="program-item"><div class="program-icon"><img src="assets/programas/lovable.png" alt="Lovable"></div><div class="program-name">Lovable</div></div>
+          </div>
+          <div class="program-cat">
+            <h4>Edición de Video</h4>
+            <div class="program-item"><div class="program-icon"><img src="assets/programas/premiere.png" alt="Premiere Pro"></div><div class="program-name">Premiere Pro</div></div>
+            <div class="program-item"><div class="program-icon"><img src="assets/programas/after-effects.png" alt="After Effects"></div><div class="program-name">After Effects</div></div>
+          </div>
+          <div class="program-cat">
+            <h4>Gestión de Proyectos</h4>
+            <div class="program-item"><div class="program-icon"><img src="assets/programas/asana.png" alt="Asana"></div><div class="program-name">Asana</div></div>
+            <div class="program-item"><div class="program-icon"><img src="assets/programas/notion.png" alt="Notion"></div><div class="program-name">Notion</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="page clients-page">
+    <span class="page-number">03</span>
+    <div class="block-title">Marcas con las que he trabajado</div>
+    <div class="client-grid">
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/4d-next-lecheria.svg" alt="4D Next Lechería" loading="lazy"></div>
+        <div class="client-name">4D Next Lechería</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/b9-ticketing.svg" alt="B9 Ticketing" loading="lazy"></div>
+        <div class="client-name">B9 Ticketing</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/back9.svg" alt="Back9" loading="lazy"></div>
+        <div class="client-name">Back9</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/carlos-mauricio-ramirez.svg" alt="Carlos Mauricio Ramírez's" loading="lazy"></div>
+        <div class="client-name">Carlos Mauricio Ramírez's</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/circuito-lider.svg" alt="Circuito Líder 100.5 FM" loading="lazy"></div>
+        <div class="client-name">Circuito Líder 100.5 FM</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/el-patio.svg" alt="El Patio" loading="lazy"></div>
+        <div class="client-name">El Patio</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/gloria-cycling.svg" alt="GLORIA Cycling" loading="lazy"></div>
+        <div class="client-name">GLORIA Cycling</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/katrin-fishing-team.svg" alt="Katrin Fishing Team" loading="lazy"></div>
+        <div class="client-name">Katrin Fishing Team</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/mangata.svg" alt="Mangata" loading="lazy"></div>
+        <div class="client-name">Mangata</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/perez-burelli-calzadilla.svg" alt="Pérez Burelli & Calzadilla" loading="lazy"></div>
+        <div class="client-name">Pérez Burelli &amp; Calzadilla</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/platinium-grupo-inmobiliario.svg" alt="Platinium Grupo Inmobiliario" loading="lazy"></div>
+        <div class="client-name">Platinium Grupo Inmobiliario</div>
+      </div>
+      <div class="client-item">
+        <div class="client-logo"><img src="assets/logos/pow-fitness.svg" alt="POW Fitness" loading="lazy"></div>
+        <div class="client-name">POW Fitness</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS / CONTENTS -->
+  <section class="page" id="servicios">
+    <span class="page-number">04</span>
+    <div class="block-title" style="font-size:15px; letter-spacing:0.1em; text-transform:uppercase;">Índice de trabajo</div>
+    <h2 class="display" style="font-size:clamp(32px,5vw,56px); text-transform:none; margin-top:8px;">En qué trabajo</h2>
+    <div class="mac-cards">
+      <a href="#branding" class="mac-card c1">
+        <div class="eyebrow">Identidad de marca</div>
+        <h3>Branding hecho a la medida.</h3>
+        <span class="placeholder-tag">Imagen pendiente</span>
+        <span class="plus">+</span>
+      </a>
+      <a href="#web" class="mac-card c2">
+        <div class="eyebrow">Sitios y landing pages</div>
+        <h3>Diseño web, claro y funcional.</h3>
+        <span class="placeholder-tag">Imagen pendiente</span>
+        <span class="plus">+</span>
+      </a>
+      <a href="#motion" class="mac-card c3">
+        <div class="eyebrow">Animación y edición</div>
+        <h3>Motion que se mueve con propósito.</h3>
+        <span class="placeholder-tag">Imagen pendiente</span>
+        <span class="plus">+</span>
+      </a>
+      <a href="#social" class="mac-card c4">
+        <div class="eyebrow">Contenido y media kits</div>
+        <h3>Social listo para publicar.</h3>
+        <span class="placeholder-tag">Imagen pendiente</span>
+        <span class="plus">+</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- TRABAJOS: SPREADS -->
+  <section class="page" id="trabajos">
+    <span class="page-number">05</span>
+    <div class="spread-head" id="branding">
+      <div>
+        <div class="eyebrow">Branding — 01</div>
+        <h2 class="display" style="text-transform:none;">B9 Ticketing</h2>
+        <p>Sistema de identidad para sub-servicios (Control, Access), tipografía Exo 2 800 Italic, ámbar como color de marca.</p>
+      </div>
+    </div>
+    <div class="carousel">
+      <div class="carousel-slide s1">
+        <div class="glass-panel">
+          <div class="idx">Branding<strong>01</strong></div>
+          <h4>B9 Ticketing</h4>
+          <p>Sistema de identidad para sub-servicios (Control, Access), tipografía Exo 2 800 Italic, ámbar como color de marca.</p>
+        </div>
+        <span class="carousel-tag">Imagen pendiente</span>
+      </div>
+      <div class="carousel-slide s2">
+        <div class="glass-panel">
+          <div class="idx">Branding<strong>02</strong></div>
+          <h4>Sistema de logos</h4>
+          <p>Composición de marca, tipografía y aplicaciones sobre distintos formatos.</p>
+        </div>
+        <span class="carousel-tag">Imagen pendiente</span>
+      </div>
+      <div class="carousel-slide s3">
+        <div class="glass-panel">
+          <div class="idx">Branding<strong>03</strong></div>
+          <h4>Aplicaciones de marca</h4>
+          <p>Mockups y piezas reales usando el sistema visual en distintos soportes.</p>
+        </div>
+        <span class="carousel-tag">Imagen pendiente</span>
+      </div>
+    </div>
+    <div class="carousel-dots"><span class="active"></span><span></span><span></span></div>
+  </section>
+
+  <section class="page">
+    <span class="page-number">06</span>
+    <div class="spread-head" id="web">
+      <div>
+        <div class="eyebrow">Diseño Web — 02</div>
+        <h2 class="display" style="text-transform:none;">Este portfolio</h2>
+        <p>Diseño y desarrollo del sitio que estás viendo ahora mismo, construido a medida.</p>
+      </div>
+    </div>
+    <div class="spread-grid">
+      <div class="spread-item">Imagen pendiente</div>
+      <div class="spread-item">Imagen pendiente</div>
+      <div class="spread-item">Imagen pendiente</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <span class="page-number">07</span>
+    <div class="spread-head" id="motion">
+      <div>
+        <div class="eyebrow">Motion &amp; Video — 03</div>
+        <h2 class="display" style="text-transform:none;">Circuito Líder</h2>
+        <p>Dirección creativa y motion graphics para la señal radial de la emisora.</p>
+      </div>
+    </div>
+    <div class="spread-grid">
+      <div class="spread-item">Imagen pendiente</div>
+      <div class="spread-item">Imagen pendiente</div>
+      <div class="spread-item">Imagen pendiente</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <span class="page-number">08</span>
+    <div class="spread-head" id="social">
+      <div>
+        <div class="eyebrow">Social &amp; Media Kit — 04</div>
+        <h2 class="display" style="text-transform:none;">Guillermo Arcay &amp; Mangata</h2>
+        <p>Media kit de cinco páginas para periodista deportivo, y catálogo/contenido de redes para marca de accesorios.</p>
+      </div>
+    </div>
+    <div class="spread-grid">
+      <div class="spread-item">Imagen pendiente</div>
+      <div class="spread-item">Imagen pendiente</div>
+      <div class="spread-item">Imagen pendiente</div>
+    </div>
+  </section>
+
+  <!-- CONTACTO / THANK YOU -->
+  <section class="page thanks" id="contacto">
+    <span class="page-number">09</span>
+    <div class="thanks-grid">
+      <div>
+        <h2 class="display">Gracias.</h2>
+        <div class="sub">Hablemos de tu próximo proyecto</div>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:jasspro2@gmail.com"><span class="l">Email</span><span>jasspro2@gmail.com</span></a>
+        <a href="https://wa.me/584141846304" target="_blank" rel="noopener"><span class="l">WhatsApp</span><span>+58 414 1846304</span></a>
+        <a href="https://instagram.com/josesalazar2" target="_blank" rel="noopener"><span class="l">Instagram</span><span>@josesalazar2</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2026 Jose Alejandro Salazar</span>
+  <span>Lechería, Anzoátegui, Venezuela</span>
+</footer>
+
+<script>
+  const links = document.querySelectorAll('.index-nav a');
+  const sections = ['about','servicios','trabajos','contacto'].map(id => document.getElementById(id));
+  const setActive = (id) => {
+    links.forEach(l => l.classList.toggle('active', l.dataset.target === id));
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ setActive(entry.target.id); }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s => s && observer.observe(s));
+</script>
+
+</body>
+</html>
