@@ -75,7 +75,8 @@
   }
   .index-nav a.active .bar{ width:14px; }
   @media (max-width:700px){
-    .index-nav{ gap:18px; padding:0 16px; overflow-x:auto; justify-content:flex-start; }
+    .index-nav{ gap:22px; padding:0 20px; overflow-x:auto; justify-content:flex-start; -webkit-overflow-scrolling:touch; }
+    .index-nav a{ flex-shrink:0; }
   }
 
   /* ---------- HERO / COVER ---------- */
@@ -98,6 +99,9 @@
     font-size:clamp(56px, 11vw, 148px);
     max-width:1100px; position:relative;
   }
+  @media (max-width:480px){
+    .cover h1{ font-size:clamp(38px, 11vw, 148px); }
+  }
   .cover-meta{
     display:flex; justify-content:space-between; align-items:flex-end;
     margin-top:36px; max-width:1100px; position:relative;
@@ -105,6 +109,11 @@
   }
   .cover-meta strong{ color:var(--ink); font-weight:600; }
   .cover-meta .year{ font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; color:var(--ink); }
+  @media (max-width:700px){
+    .cover{ padding:56px 24px 0; min-height:92vh; }
+    .cover-label{ font-size:13px; }
+    .cover-meta{ margin-top:24px; font-size:13px; }
+  }
 
   .marquee{
     position:absolute; bottom:0; left:0; right:0;
@@ -136,7 +145,12 @@
   .cat-item:hover .cat-name{ color:var(--amber); }
   .cat-arrow{ margin-left:auto; font-size:24px; opacity:0; transition:opacity 0.2s; flex-shrink:0; }
   .cat-item:hover .cat-arrow{ opacity:1; color:var(--amber); }
-  @media (max-width:700px){ .cat-item{ gap:14px; } .cat-arrow{ display:none; } }
+  @media (max-width:700px){
+    .cat-hero{ padding:56px 24px; }
+    .cat-item{ gap:14px; }
+    .cat-arrow{ display:none; }
+    .cat-num{ width:24px; font-size:13px; }
+  }
 
   /* ---------- ABOUT PAGE ---------- */
   .about-grid{
@@ -187,7 +201,7 @@
   @media (max-width:900px){ .programs-grid{ grid-template-columns:repeat(2, 1fr); gap:28px 20px; } }
   @media (max-width:900px){
     .about-grid{ grid-template-columns:1fr; }
-    .about-photo{ max-width:220px; }
+    .about-photo{ max-width:220px; margin:0 auto; }
   }
 
   /* ---------- CLIENTS PAGE ---------- */
@@ -210,7 +224,10 @@
   }
   .client-item:hover .client-logo img{ filter:grayscale(0); opacity:1; }
   .client-name{ font-size:13px; color:var(--ink-soft); text-align:center; }
-  @media (max-width:700px){ .client-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:700px){
+    .client-grid{ grid-template-columns:repeat(2, 1fr); gap:28px 8px; max-width:100%; }
+    .client-logo{ height:120px; }
+  }
 
   /* ---------- CONTENTS / TRABAJOS INDEX ---------- */
   .contents-grid{
@@ -278,6 +295,7 @@
     font-size:13px; color:var(--ink-soft); text-align:center; padding:16px;
   }
   @media (max-width:900px){ .spread-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:520px){ .spread-grid{ grid-template-columns:1fr; } }
 
   /* ---------- HORIZONTAL SCROLL CAROUSEL (Behance-style) ---------- */
   .carousel{
@@ -329,25 +347,28 @@
   .contact-links a .l{ color:var(--ink-soft); }
   .contact-links a:hover .l{ color:var(--amber); }
   @media (max-width:800px){ .thanks-grid{ grid-template-columns:1fr; } }
+  @media (max-width:480px){
+    .contact-links a{ flex-direction:column; align-items:flex-start; gap:4px; }
+  }
 
   footer{
     padding:32px 64px; display:flex; justify-content:space-between;
     font-size:13px; color:var(--ink-soft); flex-wrap:wrap; gap:10px;
   }
   @media (max-width:700px){
-    .page{ padding:100px 24px 70px; }
-    .page-number{ right:24px; }
-    footer{ padding:24px; }
+    .page{ padding:96px 24px 64px; }
+    .page-number{ right:24px; bottom:24px; }
+    footer{ padding:24px; gap:6px; flex-direction:column; }
   }
 </style>
 </head>
 <body>
 
 <nav class="index-nav" id="indexNav">
-  <a href="#about" data-target="about"><span class="num">01</span><span class="bar"></span>Sobre mí</a>
-  <a href="#servicios" data-target="servicios"><span class="num">02</span><span class="bar"></span>Servicios</a>
-  <a href="#trabajos" data-target="trabajos"><span class="num">03</span><span class="bar"></span>Trabajos</a>
-  <a href="#contacto" data-target="contacto"><span class="num">04</span><span class="bar"></span>Contacto</a>
+  <a href="#about" data-target="about"><span class="bar"></span>Sobre mí</a>
+  <a href="#servicios" data-target="servicios"><span class="bar"></span>Servicios</a>
+  <a href="#trabajos" data-target="trabajos"><span class="bar"></span>Trabajos</a>
+  <a href="#contacto" data-target="contacto"><span class="bar"></span>Contacto</a>
 </nav>
 
 <main>
